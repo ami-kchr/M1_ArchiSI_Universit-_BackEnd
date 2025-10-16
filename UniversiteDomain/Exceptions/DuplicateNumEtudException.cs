@@ -1,4 +1,4 @@
-﻿namespace UniversiteDomain.Exceptions.EtudiantExceptions;
+﻿namespace UniversiteDomain.Exceptions;
 
 [Serializable]
 public class DuplicateNumEtudException : Exception

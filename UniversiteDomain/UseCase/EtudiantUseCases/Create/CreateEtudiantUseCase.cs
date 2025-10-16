@@ -1,7 +1,9 @@
-﻿using UniversiteDomain.DataAdapters;
+﻿using UniversiteDomain.DataAdapteur;
+using UniversiteDomain.directory_Util;
 using UniversiteDomain.Entities;
+using UniversiteDomain.Exceptions;
 
-namespace UniversiteDomain.UseCases.EtudiantUseCases.Create;
+namespace UniversiteDomain.UseCase.EtudiantUseCases.Create;
 
 public class CreateEtudiantUseCase(IEtudiantRepository etudiantRepository)
 {
