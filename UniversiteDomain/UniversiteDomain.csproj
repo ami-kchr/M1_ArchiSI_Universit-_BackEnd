@@ -7,7 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="UseCase\" />
+      <Folder Include="UseCase\EtudiantUseCases\Delete\" />
+      <Folder Include="UseCase\EtudiantUseCases\Get\" />
+      <Folder Include="UseCase\EtudiantUseCases\Update\" />
     </ItemGroup>
 
 </Project>
