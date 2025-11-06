@@ -4,12 +4,11 @@ using UniversiteDomain.DataAdapters.DataAdaptersFactory;
 using UniversiteDomain.DataAdapteur;
 using UniversiteDomain.Entities;
 using UniversiteDomain.UseCase.ParcoursUseCases.Create;
-using UniversiteDomain.UseCases.ParcoursUseCases;
 using UniversiteDomain.UseCases.ParcoursUseCases.EtudiantDansParcours;
 
 namespace UniversiteDomainUnitTests;
 
-public class ParcoursUnitTest
+public class UeUnitTest
 {
     [SetUp]
     public void Setup()
@@ -19,25 +18,25 @@ public class ParcoursUnitTest
     [Test]
     public async Task CreateParcoursUseCase()
     {
-        long idParcours = 1;
-        String nomParcours = "Ue 1";
-        int anneFormation = 2;
+        int IdUe = 1;
+        String NumeroUe = "Ue 1-1";
+        String Intitule = "ASI";
         
         // On crée le parcours qui doit être ajouté en base
-        Parcours parcoursAvant = new Parcours{NomParcours = nomParcours, AnneeFormation = anneFormation};
+        Ue UeAvant = new Ue();
         
         // On initialise une fausse datasource qui va simuler un EtudiantRepository
-        var mockParcours = new Mock<IParcoursRepository>();
+        var mockUe = new Mock<IUeRepository>();
         
         // Il faut ensuite aller dans le use case pour simuler les appels des fonctions vers la datasource
         // Nous devons simuler FindByCondition et Create
         // On dit à ce mock que le parcours n'existe pas déjà
-        mockParcours
+        mockUe
             .Setup(repo=>repo.FindByConditionAsync(p=>p.Id.Equals(idParcours)))
-            .ReturnsAsync((List<Parcours>)null);
+            .ReturnsAsync((List<Ue>)null);
         // On lui dit que l'ajout d'un étudiant renvoie un étudiant avec l'Id 1
-        Parcours parcoursFinal =new Parcours{Id=idParcours,NomParcours= nomParcours, AnneeFormation = anneFormation};
-        mockParcours.Setup(repo=>repo.CreateAsync(parcoursAvant)).ReturnsAsync(parcoursFinal);
+        Ue parcoursFinal =new Parcours{Id=idParcours,NomParcours= nomParcours, AnneeFormation = anneFormation};
+        mockUe.Setup(repo=>repo.CreateAsync(parcoursAvant)).ReturnsAsync(parcoursFinal);
         
         var mockFactory = new Mock<IRepositoryFactory>();
         mockFactory.Setup(facto=>facto.ParcoursRepository()).Returns(mockParcours.Object);
